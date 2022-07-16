@@ -20,3 +20,22 @@ var containerDecoration = BoxDecoration(
     ), //BoxShadow
   ],
 );
+
+var inputDecoration = InputDecoration(
+  // hintText: 'البريد الإلكتروني',
+  labelStyle: TextStyle(
+    fontSize: 16.0,
+    color: Colors.grey[800],
+  ),
+  fillColor: Colors.white,
+  filled: true,
+  enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: Colors.white,
+        width: 2.0,
+      ),
+      borderRadius: BorderRadius.circular(34)),
+  focusedBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+      borderRadius: BorderRadius.circular(34)),
+);

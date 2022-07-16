@@ -1,4 +1,5 @@
 import 'package:awsilny_admin/services/auth.dart';
+import 'package:awsilny_admin/shared/constants.dart';
 import 'package:awsilny_admin/shared/loading.dart';
 import 'package:flutter/material.dart';
 
@@ -23,10 +24,11 @@ class _SignInState extends State<SignIn> {
     return loading
         ? const Loading()
         : Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.blueGrey[50],
             body: SingleChildScrollView(
-              child: Padding(
+              child: Container(
                 padding: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(color: Colors.blueGrey[50]),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -65,18 +67,11 @@ class _SignInState extends State<SignIn> {
                               }),
                               controller: emailController,
                               keyboardType: TextInputType.emailAddress,
-                              decoration: const InputDecoration(
-                                labelText: 'البريد الألكتروني',
-                                labelStyle: TextStyle(
-                                  fontSize: 20.0,
-                                ),
-                                hintStyle: TextStyle(
-                                    color: Colors.amberAccent, fontSize: 10.0),
-                              ),
+                              decoration: inputDecoration.copyWith(labelText: 'البريد الإلكتروني'),
                               style: const TextStyle(fontSize: 14.0),
                             ),
                             const SizedBox(
-                              height: 5.0,
+                              height: 15.0,
                             ),
                             TextFormField(
                               validator: ((value) {
@@ -87,18 +82,11 @@ class _SignInState extends State<SignIn> {
                               }),
                               controller: passwordController,
                               obscureText: true,
-                              decoration: const InputDecoration(
-                                labelText: "كلمة السر",
-                                labelStyle: TextStyle(
-                                  fontSize: 20.0,
-                                ),
-                                hintStyle: TextStyle(
-                                    color: Colors.amberAccent, fontSize: 10.0),
-                              ),
+                              decoration: inputDecoration.copyWith(labelText: 'كلمة المرور'),
                               style: const TextStyle(fontSize: 14.0),
                             ),
                             const SizedBox(
-                              height: 30.0,
+                              height: 20.0,
                             ),
                             Text(
                               error,
@@ -140,6 +128,7 @@ class _SignInState extends State<SignIn> {
                                   if (result == null) {
                                     print('error signing in!');
                                     setState(() {
+                                      loading = false;
                                       emailController.text = '';
                                       passwordController.text = '';
                                       error = 'بيانات الدخول غير صحيحة';
@@ -148,9 +137,6 @@ class _SignInState extends State<SignIn> {
                                     print('signed in');
                                     print(result.uid);
                                   }
-                                  setState(() {
-                                    loading = false;
-                                  });
                                 }
                               },
                             ),

@@ -48,8 +48,8 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(15.0),
               child: GridView.count(
                 // crossAxisSpacing: 5,
-                mainAxisSpacing: 3,
-                crossAxisCount: 3,
+                mainAxisSpacing: 2,
+                crossAxisCount: 2,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -57,9 +57,11 @@ class _HomePageState extends State<HomePage> {
                       decoration: containerDecoration,
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/drivers');
+                          },
                           icon: const Icon(Icons.person),
-                          label: const Text('Drivers')),
+                          label: const Text('السائقين')),
                     ),
                   ),
                   Padding(
@@ -68,9 +70,11 @@ class _HomePageState extends State<HomePage> {
                       decoration: containerDecoration,
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/customers');
+                          },
                           icon: const Icon(Icons.person),
-                          label: const Text('Drivers')),
+                          label: const Text('العملاء')),
                     ),
                   ),
                   Padding(
@@ -79,9 +83,11 @@ class _HomePageState extends State<HomePage> {
                       decoration: containerDecoration,
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/bills');
+                          },
                           icon: const Icon(Icons.person),
-                          label: const Text('Drivers')),
+                          label: const Text('الفواتير')),
                     ),
                   ),
                   Padding(
@@ -90,9 +96,11 @@ class _HomePageState extends State<HomePage> {
                       decoration: containerDecoration,
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/trips');
+                          },
                           icon: const Icon(Icons.person),
-                          label: const Text('Drivers')),
+                          label: const Text('الرحلات')),
                     ),
                   ),
                   Padding(
@@ -101,9 +109,11 @@ class _HomePageState extends State<HomePage> {
                       decoration: containerDecoration,
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/orders');
+                          },
                           icon: const Icon(Icons.person),
-                          label: const Text('Drivers')),
+                          label: const Text('الحجوزات')),
                     ),
                   ),
                 ],

@@ -1,4 +1,5 @@
 import 'package:awsilny_admin/screens/authenticate/authenticate.dart';
+import 'package:awsilny_admin/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,13 +11,19 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
-    print(user);
-    // print(user!.uid);
+    final AuthService auth = AuthService();
 
-    if (user == null) {
-      return const Authenticate();
-    } else {
+    if (user != null) {
+      Future check() async {
+        return await auth.checkUserRole(user.uid);
+      }
+      dynamic currentUser = check();
+      if (currentUser == null) {
+        return const Authenticate();
+      }
       return const HomePage();
+    } else {
+      return const Authenticate();
     }
   }
 }

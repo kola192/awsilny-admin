@@ -1,3 +1,4 @@
+import 'package:awsilny_admin/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -74,15 +75,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     TextField(
                       controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        labelText: 'البريد الألكتروني',
-                        labelStyle: TextStyle(
-                          fontSize: 20.0,
-                          fontFamily: "Brand-Regular",
-                        ),
-                        hintStyle: TextStyle(
-                            color: Colors.amberAccent, fontSize: 10.0),
-                      ),
+                              decoration: inputDecoration.copyWith(labelText: 'البريد الإلكتروني'),
                       style: const TextStyle(
                           fontSize: 14.0, fontFamily: "Brand-Regular"),
                     ),
@@ -108,14 +101,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     TextField(
                       controller: passwordTextEditingController,
                       obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: "كلمة السر",
-                        labelStyle: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                        hintStyle: TextStyle(
-                            color: Colors.amberAccent, fontSize: 10.0),
-                      ),
+                              decoration: inputDecoration.copyWith(labelText: 'كلمة المرور'),
                       style: const TextStyle(fontSize: 24.0),
                     ),
                     const SizedBox(

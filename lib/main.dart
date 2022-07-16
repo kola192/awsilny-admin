@@ -1,3 +1,8 @@
+import 'package:awsilny_admin/screens/home/bills.dart';
+import 'package:awsilny_admin/screens/home/customers.dart';
+import 'package:awsilny_admin/screens/home/drivers/drivers.dart';
+import 'package:awsilny_admin/screens/home/orders.dart';
+import 'package:awsilny_admin/screens/home/trips.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:awsilny_admin/screens/wrapper.dart';
@@ -8,15 +13,7 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-        apiKey: "AIzaSyDu3PisrA6RlbMpmKxiSb0z3oM_JDawAWY",
-        authDomain: "awsilny-12c48.firebaseapp.com",
-        projectId: "awsilny-12c48",
-        storageBucket: "awsilny-12c48.appspot.com",
-        messagingSenderId: "967758912691",
-        appId: "1:967758912691:web:c4700cc12157735f3224c6"),
-  );
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -29,18 +26,27 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User?>.value(
       value: AuthService().user,
       initialData: null,
-      child: const MaterialApp(
+      child: MaterialApp(
         title: 'Awsilny Admin Dashboard',
-        localizationsDelegates: [
+        localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [
+        supportedLocales: const [
           Locale('ar', 'AE'), // English, no country code
         ],
         debugShowCheckedModeBanner: false,
-        home: Wrapper(),
+        routes: {
+          '/':(context) => const Wrapper(),
+          '/drivers':(context) => const Drivers(),
+          '/customers': (context) => const Customers(),
+          '/bills':(context) => const Bills(),
+          '/trips':(context) => const Trips(),
+          '/orders': (context) => const Orders()
+        },
+        initialRoute: '/',
+        // home: Wrapper(),
       ),
     );
   }
