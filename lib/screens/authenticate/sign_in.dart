@@ -1,4 +1,5 @@
 import 'package:awsilny_admin/services/auth.dart';
+import 'package:awsilny_admin/shared/colors.dart';
 import 'package:awsilny_admin/shared/constants.dart';
 import 'package:awsilny_admin/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -97,7 +98,7 @@ class _SignInState extends State<SignIn> {
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.blue[900],
+                                primary: AppColor.primaryColor,
                                 onPrimary: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(34.0),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
-  static Color? primaryColor = Colors.blue[900];
+  static Color? primaryColor = Colors.blue[700];
   static Color? lightColor = Colors.blueGrey[100];
   static Color homePageBackground = const Color(0xFFfbfcff);
   static Color gradientFirst = const Color(0xff0f17ad);
