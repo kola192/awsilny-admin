@@ -1,22 +1,18 @@
-import 'package:awsilny_admin/services/auth.dart';
 import 'package:awsilny_admin/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class DriversList extends StatefulWidget {
-  const DriversList({Key? key}) : super(key: key);
+class BillsList extends StatefulWidget {
+  const BillsList({Key? key}) : super(key: key);
 
   @override
-  State<DriversList> createState() => _DriversListState();
+  State<BillsList> createState() => _BillsListState();
 }
 
-class _DriversListState extends State<DriversList> {
+class _BillsListState extends State<BillsList> {
   final Stream<QuerySnapshot> users = FirebaseFirestore.instance
-      .collection('users')
-      .where('role', isEqualTo: 'driver')
+      .collection('bills')
       .snapshots();
-
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +43,8 @@ class _DriversListState extends State<DriversList> {
                       Container(
                         color: Colors.white,
                         child: ListTile(
-                          leading: Text(data.docs[index]['name'], style: const TextStyle(fontSize: 18,),),
-                          title: Text('${data.docs[index]['phone']}', style: const TextStyle(fontSize: 14,),),
-                          trailing: TextButton.icon(
-                            style: TextButton.styleFrom(
-                              primary: Colors.pink,
-                            ),
-                            label: const Text(''),
-                            onPressed: () {
-                              _auth.deleteUser(data, index);
-                              print('delete user');
-                            },
-                            icon: const Icon(Icons.delete),
-                          ),
+                          leading: Text('رقم الفاتورة ${index + 1}'),
+                          trailing: Text('\$${data.docs[index]['price']}'),
                         ),
                       ),
                       const SizedBox(

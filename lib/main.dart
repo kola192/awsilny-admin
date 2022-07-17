@@ -1,8 +1,8 @@
-import 'package:awsilny_admin/screens/home/bills.dart';
-import 'package:awsilny_admin/screens/home/customers.dart';
+import 'package:awsilny_admin/screens/home/bills/bills.dart';
+import 'package:awsilny_admin/screens/home/customers/customers.dart';
 import 'package:awsilny_admin/screens/home/drivers/drivers.dart';
-import 'package:awsilny_admin/screens/home/orders.dart';
-import 'package:awsilny_admin/screens/home/trips.dart';
+import 'package:awsilny_admin/screens/home/orders/orders.dart';
+import 'package:awsilny_admin/screens/home/trips/trips.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:awsilny_admin/screens/wrapper.dart';

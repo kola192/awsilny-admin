@@ -1,22 +1,20 @@
-import 'package:awsilny_admin/services/auth.dart';
 import 'package:awsilny_admin/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class DriversList extends StatefulWidget {
-  const DriversList({Key? key}) : super(key: key);
+class CustomersList extends StatefulWidget {
+  const CustomersList({Key? key}) : super(key: key);
 
   @override
-  State<DriversList> createState() => _DriversListState();
+  State<CustomersList> createState() => _CustomersListState();
 }
 
-class _DriversListState extends State<DriversList> {
+class _CustomersListState extends State<CustomersList> {
   final Stream<QuerySnapshot> users = FirebaseFirestore.instance
       .collection('users')
-      .where('role', isEqualTo: 'driver')
+      .where('role', isEqualTo: 'customer')
       .snapshots();
 
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +45,8 @@ class _DriversListState extends State<DriversList> {
                       Container(
                         color: Colors.white,
                         child: ListTile(
-                          leading: Text(data.docs[index]['name'], style: const TextStyle(fontSize: 18,),),
-                          title: Text('${data.docs[index]['phone']}', style: const TextStyle(fontSize: 14,),),
-                          trailing: TextButton.icon(
-                            style: TextButton.styleFrom(
-                              primary: Colors.pink,
-                            ),
-                            label: const Text(''),
-                            onPressed: () {
-                              _auth.deleteUser(data, index);
-                              print('delete user');
-                            },
-                            icon: const Icon(Icons.delete),
-                          ),
+                          leading: Text(data.docs[index]['name']),
+                          trailing: Text('${data.docs[index]['phone']}'),
                         ),
                       ),
                       const SizedBox(
