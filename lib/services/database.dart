@@ -20,7 +20,7 @@ class Database {
     }).catchError((err) => print(err.toString()));
   }
   // update driver
-  void updateCustomer(id, name, email, phone) async {
+  void updateDriver(id, name, email, phone) async {
     users.doc(id).set({
       'name': name,
       'email': email,
@@ -28,6 +28,18 @@ class Database {
       'role': 'driver'
     }).then((value) {
       print('driver updated');
+    }).catchError((err) => print(err.toString()));
+  }
+
+  // update driver
+  void updateCustomer(id, name, email, phone) async {
+    users.doc(id).set({
+      'name': name,
+      'email': email,
+      'phone': phone,
+      'role': 'customer'
+    }).then((value) {
+      print('customer updated');
     }).catchError((err) => print(err.toString()));
   }
 }

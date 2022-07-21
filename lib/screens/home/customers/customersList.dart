@@ -1,3 +1,4 @@
+import 'package:awsilny_admin/screens/home/customers/singleCustomer.dart';
 import 'package:awsilny_admin/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,14 @@ class _CustomersListState extends State<CustomersList> {
                       Container(
                         color: Colors.white,
                         child: ListTile(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SingleCustomer(customer: data.docs[index]),
+                              ),
+                            );
+                          },
                           leading: Text(data.docs[index]['name']),
                           trailing: Text('${data.docs[index]['phone']}'),
                         ),

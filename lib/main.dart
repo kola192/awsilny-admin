@@ -1,10 +1,9 @@
-import 'dart:js';
 
 import 'package:awsilny_admin/screens/home/bills/bills.dart';
 import 'package:awsilny_admin/screens/home/customers/customers.dart';
 import 'package:awsilny_admin/screens/home/drivers/drivers.dart';
 import 'package:awsilny_admin/screens/home/orders/orders.dart';
-import 'package:awsilny_admin/screens/home/singleUser.dart';
+import 'package:awsilny_admin/screens/home/drivers/singleDriver.dart';
 import 'package:awsilny_admin/screens/home/trips/trips.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +46,7 @@ class MyApp extends StatelessWidget {
           '/bills':(context) => const Bills(),
           '/trips':(context) => const Trips(),
           '/orders': (context) => const Orders(),
-          'single-user': (context) => const SingleUser(),
+          'single-user': (context) => const SingleDriver(),
         },
         initialRoute: '/',
         // home: Wrapper(),

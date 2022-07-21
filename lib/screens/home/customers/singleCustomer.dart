@@ -6,19 +6,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SingleUser extends StatefulWidget {
-  const SingleUser({Key? key}) : super(key: key);
+class SingleCustomer extends StatefulWidget {
+  const SingleCustomer({
+    Key? key,
+    this.customer
+  }) : super(key: key);
+
+  final customer;
 
   @override
-  State<SingleUser> createState() => _SingleUserState();
+  State<SingleCustomer> createState() => _SingleCustomerState();
 }
 
-class _SingleUserState extends State<SingleUser> {
+class _SingleCustomerState extends State<SingleCustomer> {
   bool _showSheet = false;
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User?>(context);
 
     final Stream<QuerySnapshot> users = FirebaseFirestore.instance
         .collection('users')
@@ -46,7 +50,7 @@ class _SingleUserState extends State<SingleUser> {
             return ListView.builder(
                 itemCount: data.size,
                 itemBuilder: (context, index) {
-                  return user!.uid == data.docs[index].id
+                  return widget.customer!.uid == data.docs[index].id
                       ? Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -294,7 +298,10 @@ class _SingleUserState extends State<SingleUser> {
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   database.updateCustomer(
-                                      data.docs[index].id, nameController.text, emailController.text, phoneController.text);
+                                      data.docs[index].id,
+                                      nameController.text,
+                                      emailController.text,
+                                      phoneController.text);
                                   _showSheet = false;
                                   setState(() {});
                                 }

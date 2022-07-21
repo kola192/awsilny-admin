@@ -11,7 +11,7 @@ class TripsList extends StatefulWidget {
 
 class _TripsListState extends State<TripsList> {
   final Stream<QuerySnapshot> users = FirebaseFirestore.instance
-      .collection('trips')
+      .collection('trips').where('status', isEqualTo: 'accepted')
       .snapshots();
 
   @override

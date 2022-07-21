@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.awsilny_admin">
    <application
-        android:label="awsilny_admin"
+        android:label="awsilny-admin"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

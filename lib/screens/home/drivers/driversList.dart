@@ -1,3 +1,4 @@
+import 'package:awsilny_admin/screens/home/drivers/singleDriver.dart';
 import 'package:awsilny_admin/services/auth.dart';
 import 'package:awsilny_admin/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -47,6 +48,14 @@ class _DriversListState extends State<DriversList> {
                       Container(
                         color: Colors.white,
                         child: ListTile(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SingleDriver(driver: data.docs[index]),
+                              ),
+                            );
+                          },
                           leading: Text(data.docs[index]['name'], style: const TextStyle(fontSize: 18,),),
                           title: Text('${data.docs[index]['phone']}', style: const TextStyle(fontSize: 14,),),
                           trailing: TextButton.icon(
