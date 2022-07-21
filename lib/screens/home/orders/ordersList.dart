@@ -1,4 +1,3 @@
-import 'package:awsilny_admin/screens/home/orders/singleOrder.dart';
 import 'package:awsilny_admin/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -44,14 +43,6 @@ class _OrdersListState extends State<OrdersList> {
                       Container(
                         color: Colors.white,
                         child: ListTile(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SingleOrder(order: data.docs[index]),
-                              ),
-                            );
-                          },
                           leading: Text('من ${data.docs[index]['startPlace']}'),
                           title: Text('إلى ${data.docs[index]['arrivePlace']}'),
                           trailing: Text('\$${data.docs[index]['price']}'),
